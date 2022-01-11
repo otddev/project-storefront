@@ -1,6 +1,8 @@
 import { Request, Response } from 'express'
 import { User, UserClass, UserCreate } from '../models/user'
 import { ErrorAPI } from '../utils/errors'
+import jwt from 'jsonwebtoken'
+import { config } from '../utils/config_init'
 
 const user = new UserClass()
 
@@ -42,7 +44,8 @@ const create = async (req: Request, res: Response) => {
 
   try {
     const result = await user.create(u)
-    res.json(result)
+    const token = jwt.sign({ user: result }, config.secret)
+    res.json(token)
   } catch (err) {
     throw new ErrorAPI('Bad Request', 400, err)
   }

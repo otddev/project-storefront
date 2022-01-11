@@ -39,11 +39,9 @@ export class UserClass {
     return result.rows[0]
   }
 
-  async create(
-    u: UserCreate
-  ): Promise<{ status: string; username: string; role: string }> {
+  async create(u: UserCreate): Promise<User> {
     const sql =
-      'INSERT INTO users (firstname, lastname, username, password, email, role) VALUES($1, $2, $3, $4, $5, $6) RETURNING id,firstname,lastname,username,email,role'
+      'INSERT INTO users (firstname, lastname, username, password, email, role) VALUES($1, $2, $3, $4, $5, $6) RETURNING id,firstname,password,lastname,username,email,role'
     const hash = await bcrypt.hash(
       u.password + config.pepper,
       parseInt(config.salt)
@@ -59,11 +57,7 @@ export class UserClass {
       'customer'
     ])
     conn.release()
-    return {
-      status: 'The user was created successfully.',
-      username: result.rows[0]['username'],
-      role: result.rows[0]['role']
-    }
+    return result.rows[0]
   }
 
   async update(u: User): Promise<User> {

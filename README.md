@@ -100,6 +100,12 @@ $[2022-01-11 09:32:00:320 [32minfo[39m: server started | port: 5000 | mode: de
 
 - The API service by default is started using port 5000 this can be changes in the .env file.
 - Check REQUIREMENTS.md for more details on API usage and guidelines.
+- The system will auto create a sysadmin user account which has admin privileges. The user create endpoint only create 'customer/user' level accounts.
+  ```
+  Credentials:
+  username: sysadmin
+  password: P@ssword00
+  ```
 
 Create the models for each database table. The methods in each model should map to the endpoints in `REQUIREMENTS.md`. Remember that these models should all have test suites and mocks.
 

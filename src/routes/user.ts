@@ -15,12 +15,7 @@ router.get(
   grant_profile('read:any', 'user'),
   controller.index
 )
-router.post(
-  '/',
-  verify_auth,
-  grant_profile('create:any', 'user'),
-  controller.create
-)
+router.post('/', controller.create)
 router.put(
   '/:id',
   verify_auth,
