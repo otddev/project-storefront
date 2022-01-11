@@ -36,11 +36,13 @@ PG_HOST=localhost
 PG_DB=store_dev
 PG_USER=postgres
 PG_PASS=Password00
+PG_PORT=5432
 
 PGT_HOST=localhost
 PGT_DB=store_test
 PGT_USER=postgres
 PGT_PASS=Password00
+PGT_PORT=5432
 ````
 
 ### 3.  DB Creation and Migrations
@@ -53,9 +55,14 @@ database data so development does not get interrupted while database structure a
 CREATE DATABASE store_dev;
 ```
 
-**Test/Production Database**
+**Test Database**
 ```
 CREATE DATABASE store_test;
+```
+
+**Production Database**
+```
+CREATE DATABASE store_prod;
 ```
 
 ### 4. NPM Commands

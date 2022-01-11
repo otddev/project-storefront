@@ -50,6 +50,5 @@ describe('API Endpoint Test', () => {
   it('[GET] /api/products/top | TOP 5 Products | Admin Only', async () => {
     const res = await request.get('/api/products/top')
     expect(res.status).toBe(200)
-    console.log(res.body)
   })
 })

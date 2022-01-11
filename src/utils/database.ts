@@ -9,6 +9,7 @@ const schema = Joi.object()
     PG_DB: Joi.string().when('NODE_ENV', { is: 'dev', then: Joi.required() }),
     PG_USER: Joi.string().when('NODE_ENV', { is: 'dev', then: Joi.required() }),
     PG_PASS: Joi.string().when('NODE_ENV', { is: 'dev', then: Joi.required() }),
+    PG_PORT: Joi.number().when('NODE_ENV', { is: 'dev', then: Joi.required() }),
     PGT_HOST: Joi.string().when('NODE_ENV', {
       is: 'test',
       then: Joi.required()
@@ -19,6 +20,10 @@ const schema = Joi.object()
       then: Joi.required()
     }),
     PGT_PASS: Joi.string().when('NODE_ENV', {
+      is: 'test',
+      then: Joi.required()
+    }),
+    PGT_PORT: Joi.number().when('NODE_ENV', {
       is: 'test',
       then: Joi.required()
     })
@@ -33,7 +38,8 @@ if (env.NODE_ENV === 'dev') {
     host: env.PG_HOST,
     database: env.PG_DB,
     user: env.PG_USER,
-    password: env.PG_PASS
+    password: env.PG_PASS,
+    port: env.PGT_PORT
   })
 }
 
@@ -42,7 +48,8 @@ if (env.NODE_ENV === 'prod') {
     host: env.PGP_HOST,
     database: env.PGP_DB,
     user: env.PGP_USER,
-    password: env.PGP_PASS
+    password: env.PGP_PASS,
+    port: env.PGP_PORT
   })
 }
 
@@ -51,7 +58,8 @@ if (env.NODE_ENV === 'test') {
     host: env.PGT_HOST,
     database: env.PGT_DB,
     user: env.PGT_USER,
-    password: env.PGT_PASS
+    password: env.PGT_PASS,
+    port: env.PGT_PORT
   })
 }
 export default client

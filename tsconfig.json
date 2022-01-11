@@ -10,6 +10,7 @@
     "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
     "outDir": "dist",
     "newLine": "lf",
+    "noImplicitAny": true,
     "types": [
       "node"
     ],

@@ -1,26 +1,29 @@
 {
   "dev": {
     "driver": "pg",
-    "host": "127.0.0.1",
-    "database": "store_dev",
-    "user": "postgres",
-    "password": "Password00",
+    "host": {"ENV": "PG_HOST"},
+    "database": {"ENV": "PG_DB"},
+    "user": {"ENV": "PG_USER"},
+    "password": {"ENV": "PG_PASS"},
+    "port" : {"ENV": "PG_PORT"},
     "searchPath": "db"
   },
   "test": {
     "driver": "pg",
-    "host": "127.0.0.1",
-    "database": "store_test",
-    "user": "postgres",
-    "password": "Password00",
+    "host": {"ENV": "PGT_HOST"},
+    "database": {"ENV": "PGT_DB"},
+    "user": {"ENV": "PGT_USER"},
+    "password": {"ENV": "PGT_PASS"},
+    "port" : {"ENV": "PGT_PORT"},
     "searchPath": "db"
   },
   "prod": {
     "driver": "pg",
-    "host": "127.0.0.1",
-    "database": "store_prod",
-    "user": "postgres",
-    "password": "Password00",
+    "host": {"ENV": "PGP_HOST"},
+    "database": {"ENV": "PGP_DB"},
+    "user": {"ENV": "PGP_USER"},
+    "password": {"ENV": "PGP_PASS"},
+    "port" : {"ENV": "PGP_PORT"},
     "searchPath": "db"
   }
 }
